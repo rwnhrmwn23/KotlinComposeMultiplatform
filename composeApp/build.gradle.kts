@@ -15,24 +15,24 @@ val secretFolder = "$projectDir/build/generatedSecret"
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
-            freeCompilerArgs.addAll(
-                "-P",
-                "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bumble.appyx.utils.multiplatform.Parcelize"
-            )
-        }
-
-//        compilations.all {
-//            kotlinOptions {
-//                jvmTarget = "11"
-//                freeCompilerArgs += listOf(
-//                    "-P",
-//                    "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bumble.appyx.utils.multiplatform.Parcelize"
-//                )
-//            }
+//        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+//        compilerOptions {
+//            jvmTarget.set(JvmTarget.JVM_1_8)
+//            freeCompilerArgs.addAll(
+//                "-P",
+//                "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bumble.appyx.utils.multiplatform.Parcelize"
+//            )
 //        }
+
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+                freeCompilerArgs += listOf(
+                    "-P",
+                    "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.bumble.appyx.utils.multiplatform.Parcelize"
+                )
+            }
+        }
     }
 
     listOf(
