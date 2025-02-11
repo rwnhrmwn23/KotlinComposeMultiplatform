@@ -1,4 +1,4 @@
-package features
+package features.search
 
 import androidx.lifecycle.viewModelScope
 import base.BaseViewModel
@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 import repository.LocationRepository
 
 data class SearchLocationModel(
-    val query: String = "", val placeState: State<List<Place>> = State.Idle
+    val query: String = "",
+    val placeState: State<List<Place>> = State.Idle,
 )
 
 sealed class SearchLocationIntent {

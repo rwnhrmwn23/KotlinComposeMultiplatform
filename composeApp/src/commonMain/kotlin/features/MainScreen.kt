@@ -1,44 +1,42 @@
-package screen
+package features
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import navigation.LocalNavigator
 import navigation.NavTarget
 
 @Composable
-fun Screen2(name: String) {
-
+fun MainScreen() {
     val navigator = LocalNavigator.current
 
-    Column {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
         Button(
             onClick = {
-                navigator.back()
-            }
+                navigator.navigate(NavTarget.SearchLocationScreen)
+            },
         ) {
-            Text("Back")
+            Text("Search Location")
         }
-
         Spacer(Modifier.height(12.dp))
-
-        Text("Text Screen 2\nName : $name")
-
-        Spacer(Modifier.height(12.dp))
-
         Button(
             onClick = {
-                navigator.navigate(
-                    NavTarget.Screen3
-                )
-            }
+                navigator.navigate(NavTarget.ReversedLocationScreen)
+            },
         ) {
-            Text("Navigate To Screen 3")
+            Text("Reversed Location")
         }
     }
 }

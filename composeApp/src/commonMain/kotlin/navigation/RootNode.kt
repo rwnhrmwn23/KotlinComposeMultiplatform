@@ -20,8 +20,11 @@ import com.bumble.appyx.navigation.composable.AppyxNavigationContainer
 import com.bumble.appyx.navigation.modality.NodeContext
 import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.navigation.node.node
-import features.SearchLocationScreen
+import features.MainScreen
+import features.reversed.ReversedLocationScreen
+import features.search.SearchLocationScreen
 import isAndroid
+import screen.Screen1
 import screen.Screen2
 import screen.Screen3
 
@@ -29,7 +32,7 @@ class RootNode(
     nodeContext: NodeContext,
     private val backStack: BackStack<NavTarget> = BackStack(
         model = BackStackModel(
-            initialTarget = NavTarget.Screen1,
+            initialTarget = NavTarget.MainScreen,
             savedStateMap = nodeContext.savedStateMap
         ),
         visualisation = {
@@ -76,19 +79,38 @@ class RootNode(
 
     override fun buildChildNode(navTarget: NavTarget, nodeContext: NodeContext): Node<*> {
         return when (navTarget) {
-            is NavTarget.Screen1 -> node(nodeContext) {
+            is NavTarget.MainScreen -> node(nodeContext) {
                 BoxBackground {
-                    SearchLocationScreen()
+                    MainScreen()
                 }
             }
+
+            is NavTarget.Screen1 -> node(nodeContext) {
+                BoxBackground {
+                    Screen1()
+                }
+            }
+
             is NavTarget.Screen2 -> node(nodeContext) {
                 BoxBackground {
                     Screen2(navTarget.name)
                 }
             }
+
             is NavTarget.Screen3 -> node(nodeContext) {
                 BoxBackground {
                     Screen3()
+                }
+            }
+
+            is NavTarget.SearchLocationScreen -> node(nodeContext) {
+                BoxBackground {
+                    SearchLocationScreen()
+                }
+            }
+            is NavTarget.ReversedLocationScreen -> node(nodeContext) {
+                BoxBackground {
+                    ReversedLocationScreen()
                 }
             }
         }

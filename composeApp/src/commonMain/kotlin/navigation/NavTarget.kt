@@ -6,6 +6,9 @@ import com.bumble.appyx.utils.multiplatform.Parcelize
 sealed class NavTarget : Parcelable {
 
     @Parcelize
+    data object MainScreen : NavTarget()
+
+    @Parcelize
     data object Screen1 : NavTarget()
 
     @Parcelize
@@ -13,4 +16,10 @@ sealed class NavTarget : Parcelable {
 
     @Parcelize
     data object Screen3 : NavTarget()
+
+    @Parcelize
+    data object SearchLocationScreen : NavTarget()
+
+    @Parcelize
+    data object ReversedLocationScreen : NavTarget()
 }
