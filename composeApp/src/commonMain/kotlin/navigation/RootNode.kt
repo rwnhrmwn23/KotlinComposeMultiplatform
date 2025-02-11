@@ -20,8 +20,8 @@ import com.bumble.appyx.navigation.composable.AppyxNavigationContainer
 import com.bumble.appyx.navigation.modality.NodeContext
 import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.navigation.node.node
+import features.SearchLocationScreen
 import isAndroid
-import screen.Screen1
 import screen.Screen2
 import screen.Screen3
 
@@ -78,7 +78,7 @@ class RootNode(
         return when (navTarget) {
             is NavTarget.Screen1 -> node(nodeContext) {
                 BoxBackground {
-                    Screen1()
+                    SearchLocationScreen()
                 }
             }
             is NavTarget.Screen2 -> node(nodeContext) {
